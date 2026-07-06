@@ -1,7 +1,8 @@
 import asyncio
 import logging
 from datetime import datetime,timedelta
-from aiogram import Bot,Dispatcher,F
+from aiogram import Bot, Dispatcher
+from aiogram.dispatcher import Dispatcher
 from aiogram.types import Message,CallbackQuery,InlineKeyboardMarkup,InlineKeyboardButton,FSInputFile,PreCheckoutQuery,LabeledPrice
 from aiogram.filters import CommandStart
 from texts import txt1,txt2,btn1,btn2,btn_crypto,btn_back,btn_privet

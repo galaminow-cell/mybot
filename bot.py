@@ -3,11 +3,8 @@ from datetime import datetime, timedelta
 
 from aiogram import Bot, Dispatcher, types
 from aiogram.utils import executor
-from aiogram.types import (
-    InlineKeyboardMarkup,
-    InlineKeyboardButton,
-    FSInputFile
-)
+
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from texts import txt1, txt2, btn1, btn2, btn_crypto, btn_back, btn_privet
 
@@ -22,35 +19,38 @@ dp = Dispatcher(bot)
 # ================= KEYBOARDS =================
 
 def main_menu():
-    return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text=btn1, callback_data="pack_half")],
-        [InlineKeyboardButton(text=btn2, callback_data="pack_full")]
-    ])
+    return InlineKeyboardMarkup().add(
+        InlineKeyboardButton(btn1, callback_data="pack_half")
+    ).add(
+        InlineKeyboardButton(btn2, callback_data="pack_full")
+    )
 
 
 def pay_menu():
-    return InlineKeyboardMarkup(inline_keyboard=[
-        [InlineKeyboardButton(text="Cloudtips", url="https://pay.cloudtips.ru/p/c069b4fc")],
-        [InlineKeyboardButton(text=btn_crypto, callback_data="crypto")],
-        [InlineKeyboardButton(text=btn_back, callback_data="back_main")]
-    ])
+    kb = InlineKeyboardMarkup()
+    kb.add(InlineKeyboardButton("Cloudtips", url="https://pay.cloudtips.ru/p/c069b4fc"))
+    kb.add(InlineKeyboardButton(btn_crypto, callback_data="crypto"))
+    kb.add(InlineKeyboardButton(btn_back, callback_data="back_main"))
+    return kb
 
 
-# ================= HANDLERS =================
+# ================= START =================
 
 @dp.message_handler(commands=["start"])
 async def start(message: types.Message):
     await message.answer_photo(
-        FSInputFile("welcome.jpg"),
+        open("welcome.jpg", "rb"),
         caption=btn_privet,
         reply_markup=main_menu()
     )
 
 
+# ================= PACKS =================
+
 @dp.callback_query_handler(lambda c: c.data == "pack_half")
 async def pack_half(callback: types.CallbackQuery):
     await callback.message.answer_photo(
-        FSInputFile("pack_half.jpg"),
+        open("pack_half.jpg", "rb"),
         caption=txt1,
         reply_markup=pay_menu()
     )
@@ -60,7 +60,7 @@ async def pack_half(callback: types.CallbackQuery):
 @dp.callback_query_handler(lambda c: c.data == "pack_full")
 async def pack_full(callback: types.CallbackQuery):
     await callback.message.answer_photo(
-        FSInputFile("pack_full.jpg"),
+        open("pack_full.jpg", "rb"),
         caption=txt2,
         reply_markup=pay_menu()
     )
@@ -70,7 +70,7 @@ async def pack_full(callback: types.CallbackQuery):
 @dp.callback_query_handler(lambda c: c.data == "back_main")
 async def back_main(callback: types.CallbackQuery):
     await callback.message.answer_photo(
-        FSInputFile("welcome.jpg"),
+        open("welcome.jpg", "rb"),
         caption=btn_privet,
         reply_markup=main_menu()
     )
@@ -85,7 +85,9 @@ async def crypto(callback: types.CallbackQuery):
     await callback.answer()
 
 
-@dp.message_handler(lambda message: message.text and message.text.startswith("/give"))
+# ================= ADMIN =================
+
+@dp.message_handler(lambda m: m.text and m.text.startswith("/give"))
 async def give_access(message: types.Message):
     if message.from_user.id != ADMIN_ID:
         return
@@ -116,7 +118,7 @@ async def give_access(message: types.Message):
         await message.answer("Ошибка: " + str(e))
 
 
-# ================= START =================
+# ================= RUN =================
 
 if name == "__main__":
     logging.basicConfig(level=logging.INFO)

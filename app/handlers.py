@@ -156,7 +156,7 @@ async def crypto_handler(callback: CallbackQuery):
 
 USDT кошелек:
 
-ВАШ_USDT_КОШЕЛЕК
+TBajonLpnM53CARU9yJasz5ezCdQPq5CHp
 
 
 После оплаты нажмите:

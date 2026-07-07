@@ -7,5 +7,6 @@ ADMIN_ID = int(
     os.getenv("ADMIN_ID")
 )
 
-
 CHANNEL_LINK = os.getenv("CHANNEL_LINK")
+
+USDT_WALLET = os.getenv("USDT_WALLET")

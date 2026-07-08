@@ -23,6 +23,10 @@ db = Database()
 
 FULL_PHOTO = FSInputFile("pack_full.jpg")
 HALF_PHOTO = FSInputFile("pack_half.jpg")
+USDT_QR = FSInputFile("usdt_qr.jpg")
+
+
+USDT_ADDRESS = "TBajonLpnM53CARU9yJasz5ezCdQPq5CHp"
 
 
 
@@ -59,11 +63,8 @@ async def tariff_handler(callback: CallbackQuery):
 
 
     if not tariff:
-        await callback.answer(
-            "Ошибка тарифа"
-        )
+        await callback.answer("Ошибка тарифа")
         return
-
 
 
     db.set_tariff(
@@ -112,7 +113,7 @@ async def cloudtips_handler(callback: CallbackQuery):
 {tariff["price"]} ₽
 
 
-Ссылка на оплату:
+Нажмите на ссылку для оплаты:
 
 https://pay.cloudtips.ru/p/c069b4fc
 
@@ -140,10 +141,10 @@ async def crypto_handler(callback: CallbackQuery):
 
 
     await callback.message.answer_photo(
-        photo=HALF_PHOTO,
+        photo=USDT_QR,
 
         caption=f"""
-🪙 Оплата USDT
+💎 Оплата USDT (TRC20)
 
 
 📦 Тариф:
@@ -154,9 +155,13 @@ async def crypto_handler(callback: CallbackQuery):
 {tariff["price"]} ₽
 
 
-USDT кошелек:
+💳 Адрес кошелька:
 
-TBajonLpnM53CARU9yJasz5ezCdQPq5CHp
+`{USDT_ADDRESS}`
+
+
+Нажмите на адрес выше,
+чтобы скопировать.
 
 
 После оплаты нажмите:

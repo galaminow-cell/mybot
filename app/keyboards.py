@@ -45,8 +45,15 @@ def payment_menu():
 
             [
                 InlineKeyboardButton(
-                    text="💳 Оплатить",
-                    callback_data="payment"
+                    text="💳 CloudTips",
+                    callback_data="cloudtips"
+                )
+            ],
+
+            [
+                InlineKeyboardButton(
+                    text="💎 USDT (TRC20)",
+                    callback_data="crypto"
                 )
             ]
 

@@ -8,42 +8,34 @@ def main_menu():
 
             [
                 InlineKeyboardButton(
-                    text="🔥 Неделя • 110 ₽",
+                    text="🔥 Неделя • 149 ₽",
                     callback_data="tariff_week"
                 )
             ],
 
             [
                 InlineKeyboardButton(
-                    text="📅 Месяц • 240 ₽",
+                    text="📅 Месяц • 299 ₽",
                     callback_data="tariff_month"
                 )
             ],
 
             [
                 InlineKeyboardButton(
-                    text="⭐ Полгода • 370 ₽",
-                    callback_data="tariff_halfyear"
-                )
-            ],
-
-            [
-                InlineKeyboardButton(
-                    text="👑 Год • 550 ₽",
+                    text="👑 Год • 599 ₽ ⭐ Самый популярный",
                     callback_data="tariff_year"
                 )
             ],
 
             [
                 InlineKeyboardButton(
-                    text="💎 Вечный • 1299 ₽",
+                    text="💎 Навсегда • 1299 ₽",
                     callback_data="tariff_forever"
                 )
             ]
 
         ]
     )
-
 
 
 def payment_menu():
@@ -53,21 +45,13 @@ def payment_menu():
 
             [
                 InlineKeyboardButton(
-                    text="💳 CloudTips",
-                    callback_data="cloudtips"
-                )
-            ],
-
-            [
-                InlineKeyboardButton(
-                    text="🪙 Оплата USDT",
-                    callback_data="crypto"
+                    text="💳 Оплатить",
+                    callback_data="payment"
                 )
             ]
 
         ]
     )
-
 
 
 def check_payment_menu():
@@ -84,7 +68,6 @@ def check_payment_menu():
 
         ]
     )
-
 
 
 def admin_payment_menu(user_id):

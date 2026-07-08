@@ -2,26 +2,21 @@ TARIFFS = {
 
     "week": {
         "name": "🔥 Неделя",
-        "price": 110
+        "price": 149
     },
 
     "month": {
         "name": "📅 Месяц",
-        "price": 240
-    },
-
-    "halfyear": {
-        "name": "⭐ Полгода",
-        "price": 370
+        "price": 299
     },
 
     "year": {
-        "name": "👑 Год",
-        "price": 550
+        "name": "👑 Год • Самый популярный",
+        "price": 599
     },
 
     "forever": {
-        "name": "💎 Вечный",
+        "name": "💎 Навсегда",
         "price": 1299
     }
 

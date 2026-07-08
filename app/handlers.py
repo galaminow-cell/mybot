@@ -42,12 +42,10 @@ async def start_handler(message: Message):
     )
 
 
-    await message.answer_photo(
-        photo=FULL_PHOTO,
-        caption=WELCOME_TEXT,
-        reply_markup=main_menu()
-    )
-
+    await message.answer(
+    WELCOME_TEXT,
+    reply_markup=main_menu()
+)
 
 
 @router.callback_query(F.data.startswith("tariff_"))

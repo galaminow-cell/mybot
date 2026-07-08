@@ -168,11 +168,7 @@ async def crypto_handler(callback: CallbackQuery):
 
 💳 Адрес кошелька:
 
-`TBajonLpnM53CARU9yJasz5ezCdQPq5CHp`
-
-
-👆 Нажмите на адрес выше,
-чтобы скопировать.
+TBajonLpnM53CARU9yJasz5ezCdQPq5CHp
 
 
 После оплаты нажмите:

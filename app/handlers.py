@@ -137,6 +137,14 @@ async def crypto_handler(callback: CallbackQuery):
         callback.from_user.id
     )
 
+    if not user:
+        await callback.message.answer(
+            "❌ Сначала выберите тариф."
+        )
+        await callback.answer()
+        return
+
+
     tariff = TARIFFS.get(user[4])
 
 
@@ -155,12 +163,15 @@ async def crypto_handler(callback: CallbackQuery):
 {tariff["price"]} ₽
 
 
+📷 Отсканируйте QR-код сверху
+
+
 💳 Адрес кошелька:
 
-`{USDT_ADDRESS}`
+`TBajonLpnM53CARU9yJasz5ezCdQPq5CHp`
 
 
-Нажмите на адрес выше,
+👆 Нажмите на адрес выше,
 чтобы скопировать.
 
 
